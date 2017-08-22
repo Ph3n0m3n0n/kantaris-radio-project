@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Studio</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="studio">
+
+    <ion-card>
+
+        <ion-card-content>
+            <img src="{{studio.picture}}"/>
+            <h2>{{studio.name}}</h2>
+            <h3>{{studio.address}}</h3>
+        </ion-card-content>
+
+        <ion-list>
+            <a href="tel:{{studio.Phone__c}}" ion-item>
+                <ion-icon name="call" item-left></ion-icon>
+                <p>Call Office</p>
+                <h2>{{studio.phone}}</h2>
+            </a>
+            <a href="mailto:{{studio.email}}" ion-item>
+                <ion-icon name="mail" item-left></ion-icon>
+                <p>Email</p>
+                <h2>{{studio.email}}</h2>
+            </a>
+        </ion-list>
+
+    </ion-card>
+
+</ion-content>

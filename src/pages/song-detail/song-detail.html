@@ -1,0 +1,48 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Song</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-card *ngIf="song.id">
+        <img src="{{song.coverart}}"/>
+        <ion-card-content>
+            <h1 class="card-title">{{song.title}}</h1>
+            <p>{{song.genre}} | {{song.link}}</p>
+        </ion-card-content>
+        <ion-list>
+
+        <hr>
+        <h1 class="card-title">Artist</h1>
+            <button ion-item (click)="openArtistDetail(song.artist)">
+                <ion-avatar item-left>
+                    <img src="{{song.artist.thumbnail}}"/>
+                </ion-avatar>
+                <h2>{{songs.artist.name}}</h2>
+            </button>
+
+        <hr>
+        <h2 class="card-title">Recording Studio</h2>
+            <button ion-item (click)="openStudioDetail(song.studio)">
+                <ion-avatar item-left>
+                    <img src="{{song.studio.picture}}"/>
+                </ion-avatar>
+                <h2>{{song.studio.name}}</h2>
+                <p>{{song.studio.address}}</p>
+            </button>
+        </ion-list>
+
+        <ion-item>
+            <button ion-button icon-left (click)="favorite(song)" clear item-left>
+                <ion-icon name="star"></ion-icon>
+                Favorite
+            </button>
+            <button ion-button icon-left (click)="share(song)" clear item-right>
+                <ion-icon name="share"></ion-icon>
+                Share
+            </button>
+        </ion-item>
+
+    </ion-card>
+</ion-content>

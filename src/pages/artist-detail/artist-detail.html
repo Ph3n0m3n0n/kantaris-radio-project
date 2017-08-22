@@ -1,0 +1,58 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Artist</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-card *ngIf="artist.id">
+        <img src="{{artist.picture}}"/>
+        <ion-card-content>
+            <h2 class="card-title">{{artist.name}}</h2>
+            <p>{{artist.genre}}</p>
+        </ion-card-content>
+        <ion-list>
+
+            <ion-item>
+                <ion-icon item-left name="moon"></ion-icon>
+                <h3>Origin</h3>
+                <ion-note item-right>{{artist.state}}</ion-note>
+            </ion-item>
+            <ion-item>
+                <ion-icon item-left name="leaf"></ion-icon>
+                <h3>Summary</h3>
+                <ion-note item-right>{{artist.description}}</ion-note>
+            </ion-item>
+
+            <hr>
+            <button ion-item (click)="openSongDetail(artist.songs)">
+                <ion-avatar item-left>
+                    <img src="{{artist.songs.coverart}}"/>
+                </ion-avatar>
+                <h2>{{artist.song.title}}</h2>
+                <p>{{artist.song.genre}}</p>
+            </button>
+
+            <hr>
+            <button ion-item (click)="openStudioDetail(artist.studio)">
+                <ion-avatar item-left>
+                    <img src="{{artist.studio.picture}}"/>
+                </ion-avatar>
+                <h2>{{artist.studio.name}}</h2>
+                <p>{{artist.studio.title}}</p>
+            </button>
+        </ion-list>
+
+        <ion-item>
+            <button ion-button icon-left (click)="favorite(artist)" clear item-left>
+                <ion-icon name="star"></ion-icon>
+                Favorite
+            </button>
+            <button ion-button icon-left (click)="share(artist)" clear item-right>
+                <ion-icon name="share"></ion-icon>
+                Share
+            </button>
+        </ion-item>
+
+    </ion-card>
+</ion-content>
