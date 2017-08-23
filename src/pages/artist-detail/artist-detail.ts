@@ -3,7 +3,8 @@ import {ActionSheetController, ActionSheet, NavController, NavParams, ToastContr
 import {StudioDetailPage} from '../studio-detail/studio-detail';
 //import {SongDetailPage} from '../song-detail/song-detail';
 import {ArtistService} from '../../providers/artist-service-mock';
-// import {SongService} from '../../providers/songs-service-mock';
+import {SongService} from '../../providers/songs-service-mock';
+//import {StudioService} from '../../providers/studio-service-mock';
 
 @Component({
     selector: 'page-artist-detail',
@@ -18,7 +19,7 @@ export class ArtistDetailPage {
         public navCtrl: NavController, 
         public navParams: NavParams, 
         public artistService: ArtistService,
-        //public songService: SongService, 
+        public songService: SongService, 
         public toastCtrl: ToastController) 
     {
         this.artist = this.navParams.data;
@@ -31,11 +32,15 @@ export class ArtistDetailPage {
         this.navCtrl.push(StudioDetailPage, studio);
     }
 
+    // openSongDetail(song) {
+    //     this.navCtrl.push(StudioDetailPage, song);
+    // }
+
     favorite(artist) {
         this.artistService.favorite(artist)
             .then(artist => {
                 let toast = this.toastCtrl.create({
-                    message: 'artist added to your favorites',
+                    message: 'Artist added to your favorites',
                     cssClass: 'mytoast',
                     duration: 1000
                 });

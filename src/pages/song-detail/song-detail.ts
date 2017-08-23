@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActionSheetController, ActionSheet, NavController, NavParams, ToastController } from 'ionic-angular';
 import { SongService } from '../../providers/songs-service-mock';
+import { StudioService } from '../../providers/studio-service-mock';
 
 @Component({
     selector: 'page-song-detail',
@@ -15,6 +16,7 @@ export class SongDetailPage {
         public navCtrl: NavController, 
         public navParams: NavParams, 
         public songService: SongService, 
+        public studioService: StudioService,
         public toastCtrl: ToastController) 
     {
         this.song = this.navParams.data;
@@ -23,15 +25,19 @@ export class SongDetailPage {
         );
     }
 
-    openStudioDetail(song) {
-        this.navCtrl.push(SongDetailPage, song);
+    openStudioDetail(studio) {
+        this.navCtrl.push(SongDetailPage, studio);
+    }
+
+    openArtistDetail(artist) {
+        this.navCtrl.push(SongDetailPage, artist);
     }
 
     favorite(song) {
         this.songService.favorite(song)
             .then(song => {
                 let toast = this.toastCtrl.create({
-                    message: 'song added to your favorites',
+                    message: 'Song added to your favorites',
                     cssClass: 'mytoast',
                     duration: 1000
                 });
